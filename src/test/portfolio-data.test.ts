@@ -1,7 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { portfolio } from '@/data/portfolio';
+import { portfolio, gmailComposeUrl } from '@/data/portfolio';
 
 describe('Supplied portfolio facts', () => {
+  it('addresses Gmail compose to the supplied email', () => {
+    const url = new URL(gmailComposeUrl);
+    expect(url.origin).toBe('https://mail.google.com');
+    expect(url.searchParams.get('view')).toBe('cm');
+    expect(url.searchParams.get('to')).toBe('mohitrajpurohit460@gmail.com');
+  });
   it('keeps expected graduation at 2030', () => {
     expect(portfolio.education.graduation).toBe(2030);
   });
