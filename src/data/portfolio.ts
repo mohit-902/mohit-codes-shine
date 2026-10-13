@@ -3,7 +3,7 @@ export const portfolio = {
   title: 'B.Tech ECE Student',
   ambition: 'Aspiring Embedded Systems Engineer',
   introduction: 'Ready to learn new things and serve.',
-  about: 'I’m Mohit, a first-year B.Tech Electronics & Communication Engineering student at JECRC University. I’m learning C and Java, exploring my technical interests, and finding my passion in engineering.',
+  about: 'I’m Mohit, a first-year B.Tech Electronics & Communication Engineering student at JECRC University. I’m learning C, exploring my technical interests, and finding my passion in engineering.',
   email: 'mohitrajpurohit460@gmail.com',
   location: 'Jodhpur, India',
   github: 'https://github.com/mohit-902',
@@ -17,6 +17,7 @@ export const portfolio = {
   certifications: [ { name: 'Makerspace Workshop', issuer: 'Makerspace' }, { name: 'GDG Workshop', issuer: 'GDG' } ],
   projects: [],
 };
+export const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(portfolio.email)}`;
 export const navigation = [
   { id: 'home', label: 'Home' }, { id: 'about', label: 'About' },
   { id: 'education', label: 'Education' }, { id: 'skills', label: 'Skills' },

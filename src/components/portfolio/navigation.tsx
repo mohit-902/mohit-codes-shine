@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { navigation, portfolio } from '@/data/portfolio';
+import { navigation, gmailComposeUrl } from '@/data/portfolio';
 
 export function Navigation() {
   const [open, setOpen] = useState(false);
@@ -19,7 +19,7 @@ export function Navigation() {
       <nav aria-label="Main navigation" className="desktop-nav">
         {navigation.map(({ id, label }) => <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined} className={active === id ? 'nav-active' : ''}>{label}</a>)}
       </nav>
-      <Button asChild variant="outline" className="header-contact"><a href={`mailto:${portfolio.email}`}>Let’s connect <ArrowUpRight /></a></Button>
+      <Button asChild variant="outline" className="header-contact"><a href={gmailComposeUrl} target="_blank" rel="noopener noreferrer">Let’s connect <ArrowUpRight /></a></Button>
       <Button variant="ghost" size="icon" className="mobile-menu-button" onClick={() => setOpen(!open)} aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="mobile-navigation">{open ? <X /> : <Menu />}</Button>
     </div>
     {open && <nav id="mobile-navigation" aria-label="Mobile navigation" className="mobile-nav page-width">{navigation.map(({id,label}) => <a href={`#${id}`} key={id} onClick={() => setOpen(false)}>{label}</a>)}</nav>}

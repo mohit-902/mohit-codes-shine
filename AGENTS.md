@@ -13,4 +13,5 @@
 - Keep editable personal facts in `src/data/portfolio.ts`; presentation reads from this module to keep future updates consistent.
 - Keep the portfolio on the index route with section anchors, as the requested navigation scrolls within a single page.
 - Use reusable portfolio navigation and section headings alongside the existing Button component for consistent interactions.
-- Contact uses a real mailto link, with no form or storage, because no submission service is required.
+- Contact links share a Gmail compose URL derived from the editable email so visitors can write directly in Gmail without a submission service.
+- Load the supplied hosted Botpress scripts once after hydration, in injector/configuration order; preserve the provider-owned chat UI and history settings.
