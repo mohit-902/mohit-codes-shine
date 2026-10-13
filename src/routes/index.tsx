@@ -1,10 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { ArrowDown, ArrowRight, ArrowUpRight, Award, BookOpen, Code2, Cpu, Github, GraduationCap, Linkedin, Mail, MapPin, MessageSquare, UserRound } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUpRight, Award, BookOpen, Code2, Cpu, Github, GraduationCap, Linkedin, Mail, MapPin, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Navigation } from '@/components/portfolio/navigation';
 import { SectionHeading } from '@/components/portfolio/section-heading';
-import { portfolio as p } from '@/data/portfolio';
+import { portfolio as p, gmailComposeUrl } from '@/data/portfolio';
 import boardImage from '@/assets/embedded-board.jpg';
+import portrait from '@/assets/mohit-headshot.png.asset.json';
+import { Chatbot } from '@/components/portfolio/chatbot';
 
 export const Route = createFileRoute('/')({
   head: () => ({ meta: [
@@ -21,6 +23,7 @@ function Portfolio() {
   return <>
     <a className="skip-link" href="#about">Skip to content</a>
     <Navigation />
+    <Chatbot />
     <main>
       <section id="home" className="hero">
         <img className="hero-image" src={boardImage} alt="Close-up of an ESP32 microcontroller board" width={1536} height={1024} fetchPriority="high" />
@@ -50,7 +53,7 @@ function Portfolio() {
           <p className="section-copy">My goal is to grow into an embedded systems engineer, connecting what I learn in the classroom with my interest in hardware and programming.</p>
           <div className="about-meta"><span><GraduationCap size={17} /> ECE student</span><span><Cpu size={17} /> Embedded systems enthusiast</span></div>
         </div>
-        <div className="portrait-placeholder" aria-label="Profile photo placeholder"><div className="portrait-icon"><UserRound size={66} strokeWidth={1} /></div><span>MOHIT RAJPUROHIT</span><p>Profile photo coming soon</p><div className="portrait-corner top-left" /><div className="portrait-corner bottom-right" /></div>
+        <figure className="profile-portrait"><img src={portrait.url} alt="Mohit Rajpurohit wearing a suit and tie" width={768} height={1059} loading="lazy" /><figcaption>MOHIT RAJPUROHIT</figcaption><div className="portrait-corner top-left" /><div className="portrait-corner bottom-right" /></figure>
       </section>
 
       <section id="education" className="section section-band"><div className="page-width">
@@ -75,8 +78,8 @@ function Portfolio() {
       </section>
 
       <section id="contact" className="section contact-section"><div className="page-width contact-layout">
-        <div><SectionHeading number="06" eyebrow="CONTACT" title="Let’s start a conversation." /><p className="section-copy">Have an opportunity, an idea, or simply want to connect?<br className="desktop-break" /> I’d love to hear from you.</p><Button asChild size="lg" className="contact-cta"><a href={`mailto:${p.email}`}>Get in touch <ArrowUpRight /></a></Button></div>
-        <div className="contact-details"><a className="email-link" href={`mailto:${p.email}`}><Mail size={20} /><div><span className="small-label">EMAIL</span><span>{p.email}</span></div><ArrowUpRight size={18} /></a><div className="contact-location"><MapPin size={20} /><div><span className="small-label">BASED IN</span><span>{p.location}</span></div></div><div className="professional-links"><a href={p.github} target="_blank" rel="noopener noreferrer"><Github size={19} /> GitHub <ArrowUpRight size={15} /></a><a href={p.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={19} /> LinkedIn <ArrowUpRight size={15} /></a></div></div>
+        <div><SectionHeading number="06" eyebrow="CONTACT" title="Let’s start a conversation." /><p className="section-copy">Have an opportunity, an idea, or simply want to connect?<br className="desktop-break" /> I’d love to hear from you.</p><Button asChild size="lg" className="contact-cta"><a href={gmailComposeUrl} target="_blank" rel="noopener noreferrer">Get in touch <ArrowUpRight /></a></Button></div>
+        <div className="contact-details"><a className="email-link" href={gmailComposeUrl} target="_blank" rel="noopener noreferrer"><Mail size={20} /><div><span className="small-label">EMAIL</span><span>{p.email}</span></div><ArrowUpRight size={18} /></a><div className="contact-location"><MapPin size={20} /><div><span className="small-label">BASED IN</span><span>{p.location}</span></div></div><div className="professional-links"><a href={p.github} target="_blank" rel="noopener noreferrer"><Github size={19} /> GitHub <ArrowUpRight size={15} /></a><a href={p.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={19} /> LinkedIn <ArrowUpRight size={15} /></a></div></div>
       </div></section>
     </main>
     <footer className="page-width footer"><div><a className="wordmark" href="#home">mohit<span className="text-primary">.</span></a><p>© {new Date().getFullYear()} Mohit Rajpurohit. All rights reserved.</p></div><nav aria-label="Footer navigation"><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a><a href="#home" className="back-top">Back to top <ArrowUpRight size={14} /></a></nav></footer>
